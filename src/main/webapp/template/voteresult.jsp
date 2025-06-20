@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<form action="result" method="POST">
+<form action="/Mk-JD2-111-25-0.1.4-SNAPSHOT/vote">
     <p><span style='color: red; font-size: 22px;'>Результаты голосования</span></p>
     <table border = '0' cellpadding = '5' width = '400'>
     <tr><td><b>Исполнители</b></td></tr>
@@ -29,7 +29,9 @@
         <tr><td>${item}</td></tr>
 		</c:forEach>
     <tr><td></td></tr>
+    <tr><td><button>На главную</button></td></tr>
     </table>
+
 </form>
 
 </body>

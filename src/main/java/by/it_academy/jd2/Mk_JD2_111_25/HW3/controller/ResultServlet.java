@@ -28,6 +28,5 @@ public class ResultServlet extends HttpServlet {
         req.setAttribute("aboutsStats", stats.getAbouts());
 
         req.getRequestDispatcher("template/voteresult.jsp").forward(req, resp);
-
     }
 }

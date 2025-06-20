@@ -50,6 +50,7 @@ public class VoteServlet extends HttpServlet {
             writer.write("<p><span style='color: red; font-size: 22px;'>Ошибка!</span></p>");
             writer.write("<tr><td>Не все поля заполнены</td></tr>");
             writer.write("<tr><td>Либо выбрано менее трёх жанров!</td></tr>");
+            writer.write("<tr><td><button onclick=\"history.back()\">Вернуться</button></td></tr>");
             writer.write("</table>");
         } else {
             Vote result = new Vote();
