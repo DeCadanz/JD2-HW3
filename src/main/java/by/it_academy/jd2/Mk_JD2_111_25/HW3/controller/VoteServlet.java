@@ -21,15 +21,12 @@ public class VoteServlet extends HttpServlet {
 
     private final String[] artists = new String[]{"Korpiklaani", "Валентина Легкоступова", "Кирилл Сочный",
             "Красная Плесень", "Пророк Санбой"};
-    private final String[] genres = new String[]{"Post-punk", "Heavy metal", "Retrowave", "Italo disco", "Chanson",
-            "Pop music", "Gangsta rap", "Nerdcore", "Jazz", "Другой жанр"};
+    private final String[] genres = new String[]{"Post-punk", "Heavy metal", "Retrowave", "Italo disco", "Chanson"};
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
-
-
         req.setAttribute("artistsList", artists);
         req.setAttribute("genresList", genres);
 
@@ -58,7 +55,11 @@ public class VoteServlet extends HttpServlet {
             result.setArtist(artists[0]);
             result.setGenres(Arrays.asList(genres));
             result.setAbout(about);
-            service.add(result);
+            try {
+                service.add(result);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
 
             resp.sendRedirect(req.getContextPath() + "/result");
         }

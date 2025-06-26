@@ -22,7 +22,12 @@ public class ResultServlet extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
 
-        Stats stats = service.getStats();
+        Stats stats = null;
+        try {
+            stats = service.getStats();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         req.setAttribute("artistsStats", stats.getArtists());
         req.setAttribute("genresStats", stats.getGenre());
         req.setAttribute("aboutsStats", stats.getAbouts());

@@ -3,7 +3,7 @@ package by.it_academy.jd2.Mk_JD2_111_25.HW3.service;
 import by.it_academy.jd2.Mk_JD2_111_25.HW3.dto.Stats;
 import by.it_academy.jd2.Mk_JD2_111_25.HW3.dto.Vote;
 import by.it_academy.jd2.Mk_JD2_111_25.HW3.service.api.IVoteService;
-import by.it_academy.jd2.Mk_JD2_111_25.HW3.storage.VoteStorageRam;
+import by.it_academy.jd2.Mk_JD2_111_25.HW3.storage.VoteStorageDB;
 import by.it_academy.jd2.Mk_JD2_111_25.HW3.storage.api.IVoteStorage;
 
 import java.util.ArrayList;
@@ -13,16 +13,15 @@ import java.util.Map;
 
 public class VoteService implements IVoteService {
 
-    private static final IVoteStorage storage = new VoteStorageRam();
+    private static final IVoteStorage storage = new VoteStorageDB();
 
     @Override
-    public void add(Vote vote) {
-        //VALIDATION
-        this.storage.add(vote);
+    public void add(Vote vote) throws ClassNotFoundException {
+        storage.add(vote);
     }
 
     @Override
-    public Stats getStats() {
+    public Stats getStats() throws ClassNotFoundException {
         Map<String, Integer> artistStats = new HashMap<>();
         Map<String, Integer> genreStats = new HashMap<>();
         List<String> abouts = new ArrayList<>();
